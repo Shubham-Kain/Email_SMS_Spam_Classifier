@@ -1,3 +1,5 @@
+from zipfile import sizeFileHeader
+
 import streamlit as st
 import pickle
 import string
@@ -23,9 +25,9 @@ def transform_text(text):
 tfidf = pickle.load(open("tfidf_vectorizer.pkl","rb"))
 model =pickle.load(open("spam_classifier.pkl","rb"))
 
-st.title("Email/SMS Spam Classifier")
+st.title("Email and SMS Spam Classifier")
 
-input_sms = st.text_input("Enter the message")
+input_sms = st.text_area("Enter the message",height=280,)
 if st.button('Predict'):
  transform_sms = transform_text(input_sms)
 
